@@ -9,8 +9,6 @@ export default function useVisualMode(initial) {
       setMode(newMode);
       history.pop()
       history.push(newMode)
-
-
       setHistory(history);
     } else { 
   
@@ -31,7 +29,6 @@ export default function useVisualMode(initial) {
     const currentMode = history.pop();
     const lastIndex = history.length - 1;
     const lastMode = history[lastIndex];
-    console.log("lastmode", lastMode);
     setMode(lastMode);
     setHistory(history);
 
