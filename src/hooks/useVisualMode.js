@@ -7,11 +7,11 @@ export default function useVisualMode(initial) {
   function transition(newMode, replace = false) {
     if (replace) {
       setMode(newMode);
-      history.pop()
-      history.push(newMode)
+      history.pop();
+      history.push(newMode);
       setHistory(history);
-    } else { 
-  
+    } else {
+
       setMode(newMode);
       history.push(newMode);
       setHistory(history);
@@ -26,7 +26,7 @@ export default function useVisualMode(initial) {
       return;
     }
 
-    const currentMode = history.pop();
+    history.pop();
     const lastIndex = history.length - 1;
     const lastMode = history[lastIndex];
     setMode(lastMode);
