@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-
 
 
 export default function useApplicationData() {
@@ -25,8 +24,18 @@ export default function useApplicationData() {
 
   const setDay = day => setState(prev => ({ ...prev, day }));
 
-  const bookInterview = (id, interview) => {
-    console.log(id, interview);
+  function updateSpots(days, appointments) {
+    const targetDay = days.find(day => day.name === state.day);
+    const targetIndex = days.findIndex(day => day.name === state.day);
+    const targetAppointment = targetDay.appointments;
+    const spots = targetAppointment.filter(appointment => appointments[appointment].interview === null).length;
+    const newDays = [...days];
+    newDays[targetIndex].spots = spots;
+    return newDays;
+  }
+
+
+  function bookInterview(id, interview) {
 
     const appointment = {
       ...state.appointments[id],
@@ -36,39 +45,32 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+
+    const days = updateSpots(state.days, appointments);
 
     return axios.put(`/api/appointments/${appointment.id}`, { interview })
-      .then(res => setState({
-        ...state,
-        appointments
-      }));
+      .then(res => {
+        setState({ ...state, appointments, days });
+      });
+  }
 
+  function cancelInterview(id, interview) {
 
-  };
-
-  const cancelInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
-      interview: { ...interview }
+      interview: null
     };
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
+    const days = updateSpots(state.days, appointments);
+
     return axios.delete(`/api/appointments/${appointment.id}`, { interview })
-      .then(res => setState({
-        ...state,
-        appointments
-      }));
+      .then(res => setState({ ...state, appointments, days }));
+  }
 
-  };
+  return { state, setDay, bookInterview, cancelInterview };
 
-  return {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  };
+};
 
-  
-}
