@@ -39,3 +39,7 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Images
+
+!["Main Page View"](https://github.com/RaemeKhatib/Scheduler/blob/master/public/docs/Main%20Page.png?raw=true)
