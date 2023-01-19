@@ -41,5 +41,10 @@ npm run storybook
 ```
 
 ## Images
-
+Main Page View
 !["Main Page View"](https://github.com/RaemeKhatib/Scheduler/blob/master/public/docs/Main%20Page.png?raw=true)
+This is the Main View, a user can click on a time slot and see the current appointments booked. 
+
+Editing Existing Appointments
+!["Edit An Apppointment"](https://github.com/RaemeKhatib/Scheduler/blob/master/public/docs/Edit%20Appointment.png?raw=true)
+A user can click on the edit icon and then change the student name and choose a new interviewer.
