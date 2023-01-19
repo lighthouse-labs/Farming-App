@@ -1,7 +1,5 @@
 import React from "react";
 
-// import "components/Appointment/**STYLE**.scss"; <---- uncomment this if style needed
-
 export default function Show(props) {
 
   return (

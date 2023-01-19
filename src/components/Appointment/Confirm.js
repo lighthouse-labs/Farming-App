@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "components/Button";
-// import "components/Appointment/**STYLE**.scss"; <---- uncomment this if style needed
+
 
 export default function Confirm(props) {
 

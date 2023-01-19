@@ -8,7 +8,6 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
-// import { action } from "@storybook/addon-actions";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -34,7 +33,7 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview)
       .then(res => transition(SHOW))
-      .catch(()=> transition(ERROR_SAVE, true))
+      .catch(() => transition(ERROR_SAVE, true));
 
   }
 
@@ -46,13 +45,13 @@ export default function Appointment(props) {
     transition(REMOVING, true);
     props.cancelInterview(props.id, interview)
       .then(res => transition(EMPTY))
-      .catch(()=> transition(ERROR_DELETE, true))
+      .catch(() => transition(ERROR_DELETE, true));
   }
 
 
   return (
     <article className="appointment"
-    data-testid="appointment">
+      data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -79,15 +78,15 @@ export default function Appointment(props) {
           onSave={save}
           onCancel={back}
         />}
-      {mode === SAVING && 
-      <Status status={"Saving"} />}
-      {mode === ERROR_SAVE && 
-      <Error 
-      message={"Error in Saving"} 
-      onClose={back} />}
-      {mode === ERROR_DELETE && <Error 
-      message={"Error in Deleting"} 
-      onClose={back} />}
+      {mode === SAVING &&
+        <Status status={"Saving"} />}
+      {mode === ERROR_SAVE &&
+        <Error
+          message={"Error in Saving"}
+          onClose={back} />}
+      {mode === ERROR_DELETE && <Error
+        message={"Error in Deleting"}
+        onClose={back} />}
 
       {mode === REMOVING && <Status status={"Deleting"} />}
       {mode === CONFIRM && <Confirm
