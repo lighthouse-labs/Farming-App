@@ -23,7 +23,7 @@ export function getInterview(state, interview) {
   const interviewerId = interview.interviewer;
   const interviewer = interviewers[interviewerId];
 
-  return {...interview, interviewer}
+  return { ...interview, interviewer };
 
 }
 
