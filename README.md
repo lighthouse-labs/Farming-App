@@ -48,3 +48,13 @@ This is the Main View, a user can click on a time slot and see the current appoi
 Editing Existing Appointments
 !["Edit An Apppointment"](https://github.com/RaemeKhatib/Scheduler/blob/master/public/docs/Edit%20Appointment.png?raw=true)
 A user can click on the edit icon and then change the student name and choose a new interviewer.
+
+
+Confirming a Delete
+!["Confirming a Delete"](https://github.com/RaemeKhatib/Scheduler/blob/master/public/docs/Confirm%20Delete.png?raw=true)
+A user can click on the trash icon to delete an appointment, they will given a confirmation message to ensure that they want to delete the appointment before submitting the request. 
+
+
+Using Storybook
+!["Using Storybook"](https://github.com/RaemeKhatib/Scheduler/blob/master/public/docs/Storybook.png?raw=true)
+This is a view of the tests run through Storybook to ensure the funcitonalities. 
